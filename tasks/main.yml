@@ -1,11 +1,15 @@
 ---
 # tasks file for ansible-role-create-account 
+- name: "SSH | TARGET | install ssh-server"
+  apt:
+    name: ssh-server
+    state: present
 - name: "SSH | TARGET | add pub key to ({{ user }})"
   authorized_key:
     user: "{{ user }}"
     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
     state: present
-- name: "USER | TARGET | add pub key to ({{ sudoer }})"
+- name: "USER | TARGET | add pub key to ({{ sudoer }})"
   authorized_key:
     user: "{{ sudoer }}"
     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"

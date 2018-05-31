@@ -28,5 +28,8 @@ script:
   # Run tests.
   - ${PWD}/tests/test.sh
 
+  # Test SSH connection
+  - ssh -t scott@${container_id} "exit"
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
