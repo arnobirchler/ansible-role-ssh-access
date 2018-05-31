@@ -16,6 +16,10 @@ env:
   - distro: debian8
     playbook: test.yml
 
+before_script:
+  - apt-get install openssh-client
+  - ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
+
 script:
   # Configure test script so we can run extra tests after playbook is run.
   - export container_id=$(date +%s)
