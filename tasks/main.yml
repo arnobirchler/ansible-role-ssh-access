@@ -6,8 +6,8 @@
     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
     state: present
 - name: "USER | add pub key to ({{ sudoer }})"
-authorized_key:
-  user: "{{ sudoer }}"
-  key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
-  state: present
+  authorized_key:
+    user: "{{ sudoer }}"
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    state: present
   
