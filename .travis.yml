@@ -29,7 +29,8 @@ script:
   - ${PWD}/tests/test.sh
 
   # Test SSH connection
-  - ssh -t scott@${container_id} "exit"
+  - export ipaddr=$(docker inspect <container id> | grep "IPAddress")
+  - ssh -t scott@$ipaddr "exit"
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
