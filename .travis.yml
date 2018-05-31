@@ -29,7 +29,7 @@ script:
   - ${PWD}/tests/test.sh
 
   # Test SSH connection
-  - export ipaddr=$(docker inspect <container id> | grep "IPAddress")
+  - export ipaddr=(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $container_id)
   - ssh -t scott@$ipaddr "exit"
 
 notifications:
