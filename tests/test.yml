@@ -11,7 +11,11 @@
       apt: update_cache=yes cache_valid_time=600
       when: ansible_os_family == 'Debian'
       changed_when: false
-    - name: SSH | Create pub key
+    - name: SSH | Local | Install ssh-client
+      apt:
+        name: ssh-client
+        state: present
+    - name: SSH | Local | Create pub key
       shell: ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""
       args:
         creates: /root/.ssh/id_rsa
