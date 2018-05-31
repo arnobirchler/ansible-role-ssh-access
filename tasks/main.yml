@@ -13,9 +13,12 @@
     user: "{{ user }}"
     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
     state: present
-- name: "USER | TARGET | add pub key to ({{ sudoer }})"
+- name: "SSH | TARGET | add pub key to ({{ sudoer }})"
   authorized_key:
     user: "{{ sudoer }}"
     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
     state: present
-  
+- name: "SSH | TARGET | start openssh-server"
+  service:
+    -name: ssh
+    -state: restarted
