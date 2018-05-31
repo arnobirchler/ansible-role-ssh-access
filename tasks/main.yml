@@ -20,5 +20,5 @@
     state: present
 - name: "SSH | TARGET | start openssh-server"
   service:
-    -name: ssh
-    -state: restarted
+    name: ssh
+    state: restarted
