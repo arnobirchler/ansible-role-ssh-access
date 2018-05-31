@@ -20,6 +20,7 @@ script:
   # Configure test script so we can run extra tests after playbook is run.
   - export container_id=$(date +%s)
   - export cleanup=false
+  - export exposed_port=22
 
   # Download test shim.
   - wget -O ${PWD}/tests/test.sh https://gist.githubusercontent.com/arnobirchler/627e4655465b696a0b521a560bc2206f/raw/
@@ -30,7 +31,6 @@ script:
 
   # Test SSH connection
   - export ipaddr=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $container_id)
-  - $ipaddr
   - ssh -t scott@$ipaddr "exit"
 
 notifications:
