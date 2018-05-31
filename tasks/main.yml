@@ -1,7 +1,13 @@
 ---
 # tasks file for ansible-role-create-account 
-- name: "FILE | create a file"
-  file:
-    path: "./{{ file }}.txt"
-    state: touch
+- name: "SSH | add pub key to ({{ user }})"
+  authorized_key:
+    user: "{{ user }}"
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    state: present
+- name: "USER | add pub key to ({{ sudoer }})"
+authorized_key:
+  user: "{{ sudoer }}"
+  key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  state: present
   
