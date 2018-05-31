@@ -5,7 +5,7 @@
 # [Travis CI] http://travis-ci.org
 # [configuration] http://about.travis-ci.org/docs/user/build-configuration/
 services: docker
-
+sudo: required
 env:
   - distro: ubuntu1804
     playbook: test.yml
