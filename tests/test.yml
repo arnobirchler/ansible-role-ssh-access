@@ -3,13 +3,19 @@
 
   vars:
     gitlab_restart_handler_failed_when: false
-    file: "test"
+    user: "scott"
+    sudoer: "deployer"
 
   pre_tasks:
     - name: Update apt cache.
       apt: update_cache=yes cache_valid_time=600
       when: ansible_os_family == 'Debian'
       changed_when: false
+    - name: SSH | Create pub key
+      shell: ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""
+      args:
+        creates: /root/.ssh/id_rsa
 
   roles:
+    - arnobirchler.create-account
     - role_under_test
