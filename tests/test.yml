@@ -11,6 +11,8 @@
       apt: update_cache=yes cache_valid_time=600
       when: ansible_os_family == 'Debian'
       changed_when: false
+    - name: Create .ssh directory
+      file: path=~/.ssh state=directory
     - name: Install ssh pub key
       copy:
         src: /etc/ansible/roles/role_under_test/templates/id_rsa.pub
