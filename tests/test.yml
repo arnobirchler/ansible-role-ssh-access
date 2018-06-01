@@ -13,7 +13,7 @@
       changed_when: false
     - name: Install ssh pub key
       copy:
-        src: ./templates/id_rsa.pub
+        src: /etc/ansible/roles/role_under_test/templates/id_rsa.pub
         dest: ~/.ssh/id_rsa
     # - name: SSH | Local | Install ssh-client
     #   apt:
