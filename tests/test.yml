@@ -16,7 +16,7 @@
     - name: Install ssh pub key
       copy:
         src: /etc/ansible/roles/role_under_test/templates/id_rsa.pub
-        dest: ~/.ssh/id_rsa
+        dest: ~/.ssh/id_rsa.pub
     # - name: SSH | Local | Install ssh-client
     #   apt:
     #     name: openssh-client
