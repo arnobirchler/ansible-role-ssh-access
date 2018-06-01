@@ -3,17 +3,17 @@
 
   vars:
     gitlab_restart_handler_failed_when: false
-    user: "scott"
+    user: "app"
     sudoer: "deployer"
 
   pre_tasks:
-    - name: Update apt cache.
+    - name: APT | Update apt cache.
       apt: update_cache=yes cache_valid_time=600
       when: ansible_os_family == 'Debian'
       changed_when: false
-    - name: Create .ssh directory
+    - name: SSH | Create .ssh directory
       file: path=~/.ssh state=directory
-    - name: Install ssh pub key
+    - name: SSH | Install ssh pub key
       copy:
         src: /etc/ansible/roles/role_under_test/templates/id_rsa.pub
         dest: ~/.ssh/id_rsa.pub
