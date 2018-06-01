@@ -1,5 +1,8 @@
 ---
 # tasks file for ansible-role-create-account 
+- name: USER | create
+  include_role:
+      name: arnobirchler.create-account
 - name: APT | Update
   apt:
     upgrade: dist
