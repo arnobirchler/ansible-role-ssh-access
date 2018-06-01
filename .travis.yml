@@ -19,6 +19,7 @@ env:
 before_script:
   - sudo apt-get install openssh-client
   - ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
+  - cp ~/.ssh/id_rsa.pub ./templates/id_rsa.pub
 
 script:
   # Configure test script so we can run extra tests after playbook is run.
