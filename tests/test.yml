@@ -17,14 +17,6 @@
       copy:
         src: /etc/ansible/roles/role_under_test/templates/id_rsa.pub
         dest: ~/.ssh/id_rsa.pub
-    # - name: SSH | Local | Install ssh-client
-    #   apt:
-    #     name: openssh-client
-    #     state: present
-    # - name: SSH | Local | Create pub key
-    #   shell: ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""
-    #   args:
-    #     creates: /root/.ssh/id_rsa
 
   roles:
     - role_under_test

@@ -36,7 +36,8 @@ script:
 
   # Test SSH connection
   - export ipaddr=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $container_id)
-  - ssh -oStrictHostKeyChecking=no -t scott@$ipaddr "exit"
+  - ssh -oStrictHostKeyChecking=no -t app@$ipaddr "exit"
+  - ssh -oStrictHostKeyChecking=no -t deployer@$ipaddr "exit"
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
